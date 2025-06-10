@@ -98,10 +98,10 @@ It also deploys an [on-chain verifier contract](https://github.com/succinctlabs/
 
 ### Stateless Recursive Verification
 
-In contrast, **Valence-Helios** uses a **recursive, off-chain prover** that maintains only the **most recent proof** in memory. This proof becomes the **trusted checkpoint** for the next step. No on-chain verification is required. This works because we hard-code the initial [trusted committee](https://github.com/timewave-computer/valence-helios/blob/eab9832f03dba13c37fd63e711ee58e688ab644f/recursion/circuit/src/main.rs#L15) and [trusted number](https://github.com/timewave-computer/valence-helios/blob/eab9832f03dba13c37fd63e711ee58e688ab644f/recursion/circuit/src/main.rs#L19) into our ZK circuit, assuring that the first proof in the chain was generated from that specific checkpoint, or, in other words, signed by that specific trusted committee.
+In contrast, **Valence-Helios** uses a **recursive, off-chain prover** that maintains only the **most recent proof** in memory. This proof becomes the **trusted checkpoint** for the next step. No on-chain verification is required. This works because we hard-code the initial [trusted committee](https://github.com/timewave-computer/valence-helios/blob/eab9832f03dba13c37fd63e711ee58e688ab644f/recursion/circuit/src/main.rs#L15) and [trusted number](https://github.com/timewave-computer/valence-helios/blob/eab9832f03dba13c37fd63e711ee58e688ab644f/recursion/circuit/src/main.rs#L19) into our ZK circuit, ensuring that the first proof in the chain was generated from that specific checkpoint, or, in other words, signed by that specific trusted committee.
 
 >[!NOTE]
-> Because we generate our recursive proofs from that initial checkpoint onwards,
+> Because we generate our recursive proofs from that initial checkpoint onward,
 > we can trust every block that is emitted by the prover, so long as its associated proof
 > is valid against the static verifying key of our circuit.
 
